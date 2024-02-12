@@ -1,12 +1,16 @@
 <launch>
   <node 
     pkg="livox_camera_calib"
-    type="bag_to_pcd"
-    name="bag_to_pcd"
+    type="bag_to_calib_sample"
+    name="bag_to_calib_sample"
     output="screen"
   />
+  <!-- Instruction: Robot should stay in the position without movement -->
    <param name="bag_file" type="string" value="/home/ycj/data/calib/outdoor1.bag"/>
-   <param name="lidar_topic" type="string" value="/livox/lidar"/>
-   <param name="pcd_file" type="string" value="$(find livox_camera_calib)/result/0.pcd"/>
-   <param name="is_custom_msg" type="bool" value="false"/>
+   <param name="lidar_topic" type="string" value="/lidar"/>
+   <param name="camera_topic" type="string" value="/camera"/>
+   <param name="save_dir" type="string" value="$(find livox_camera_calib)/sample_from_bag/"/>
+   <!-- Bag reading start and end time -->
+    <param name="bag_reading_start_time" type="double" value="0"/>
+    <param name="bag_reading_duration_in_sec" type="double" value="0"/>
 </launch>
